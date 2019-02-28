@@ -1,9 +1,8 @@
 package com.ifpb.app;
 
-import com.ifpb.interfaces.FilmeInterface;
 import com.ifpb.model.Filme;
-import com.ifpb.persist.PersistArquivo;
-import com.ifpb.persist.PersistSGBD;
+import com.ifpb.persist.ContextoEstendido;
+import com.ifpb.persist.ContextoTransacao;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -20,11 +19,19 @@ public class Loader {
                 "Fantasia",
                 Date.valueOf(LocalDate.of(2011, 7, 15))
         );
+        
+        Filme filme2 = new Filme(
+                "Harry Potter e as reliquias da morte",
+                "Harry Potter e seus amigos seguem à procura das horcruxes...",
+                "Fantasia",
+                Date.valueOf(LocalDate.of(2011, 7, 15))
+        );
 
-        FilmeInterface persistSGBD = new PersistSGBD();
-        FilmeInterface persistArquivo = new PersistArquivo();
+        ContextoEstendido estendido = new ContextoEstendido();
+        ContextoTransacao transacao = new ContextoTransacao();
 
-        persistSGBD.adiconar(filme);
-        persistArquivo.adiconar(filme);
+        estendido.persistir(filme);
+        transacao.persistir(filme2);
+
     }
 }

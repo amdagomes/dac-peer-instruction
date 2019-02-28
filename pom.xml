@@ -11,6 +11,7 @@
     <modules>
         <module>crud-example-jpa</module>
         <module>example-simple-persist</module>
+        <module>example-contexto-persistencia</module>
     </modules>
     <repositories>
         <repository>

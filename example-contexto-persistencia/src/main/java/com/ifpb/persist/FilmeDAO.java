@@ -36,23 +36,15 @@ public class FilmeDAO {
         em.getTransaction().commit();
     }
 
-    //sincroniza as alterações com o banco de dados
+    //sinncroniza as alterações com o banco de dados
     public void update(Filme filme) {
         em.getTransaction().begin();
         em.merge(filme);
         em.getTransaction().commit();
     }
-    
-    // busca um filme pelo seu id
-    public Filme buscar(int id){
-        em.getTransaction().begin();
-        Filme filme = em.find(Filme.class, id);
-        em.getTransaction().commit();
-        return filme;
-    }
 
     //lista todos os filmes
-    public List<Filme> listar() {
+    public List<Filme> list() {
         String sql = "SELECT f FROM Filme f";
         TypedQuery<Filme> query = em.createQuery(sql, Filme.class);
         List<Filme> lista = query.getResultList();

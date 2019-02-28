@@ -30,26 +30,21 @@ public class Loader {
 
         filmeDAO.create(filme);
         filmeDAO.create(filme2);
-        filmeDAO.listar().forEach(
+        filmeDAO.list().forEach(
                 f -> System.out.println(f.getTitulo())
         );
         System.out.println("------------------------------");
 
         filme.setTitulo("Harry Potter e a pedra filosofal");
         filmeDAO.update(filme);
-        filmeDAO.listar().forEach(
+        filmeDAO.list().forEach(
                 f -> System.out.println(f.getTitulo())
         );
         System.out.println("------------------------------");
 
         filmeDAO.remove(filme);
-        filmeDAO.listar().forEach(
+        filmeDAO.list().forEach(
                 f -> System.out.println(f.getTitulo())
-        );
-        System.out.println("------------------------------");
-        
-        System.out.println(
-                filmeDAO.buscar(filme2.getId())
         );
     }
 }
